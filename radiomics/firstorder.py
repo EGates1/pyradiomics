@@ -199,6 +199,87 @@ class RadiomicsFirstOrder(base.RadiomicsFeaturesBase):
 
     return numpy.nanpercentile(self.targetVoxelArray, 90, axis=1)
 
+  def get91PercentileFeatureValue(self):
+    r"""
+    **6. 91th percentile**
+
+    The 91\ :sup:`th` percentile of :math:`\textbf{X}`
+    """
+
+    return numpy.nanpercentile(self.targetVoxelArray, 91, axis=1)
+
+  def get92PercentileFeatureValue(self):
+    r"""
+    **6. 92th percentile**
+
+    The 92\ :sup:`th` percentile of :math:`\textbf{X}`
+    """
+
+    return numpy.nanpercentile(self.targetVoxelArray, 92, axis=1)
+
+  def get93PercentileFeatureValue(self):
+    r"""
+    **6. 93th percentile**
+
+    The 93\ :sup:`th` percentile of :math:`\textbf{X}`
+    """
+
+    return numpy.nanpercentile(self.targetVoxelArray, 93, axis=1)
+
+  def get94PercentileFeatureValue(self):
+    r"""
+    **6. 94th percentile**
+
+    The 94\ :sup:`th` percentile of :math:`\textbf{X}`
+    """
+
+    return numpy.nanpercentile(self.targetVoxelArray, 94, axis=1)
+
+  def get95PercentileFeatureValue(self):
+    r"""
+    **6. 95th percentile**
+
+    The 95\ :sup:`th` percentile of :math:`\textbf{X}`
+    """
+
+    return numpy.nanpercentile(self.targetVoxelArray, 95, axis=1)
+
+  def get96PercentileFeatureValue(self):
+    r"""
+    **6. 96th percentile**
+
+    The 96\ :sup:`th` percentile of :math:`\textbf{X}`
+    """
+
+    return numpy.nanpercentile(self.targetVoxelArray, 96, axis=1)
+
+  def get97PercentileFeatureValue(self):
+    r"""
+    **6. 97th percentile**
+
+    The 97\ :sup:`th` percentile of :math:`\textbf{X}`
+    """
+
+    return numpy.nanpercentile(self.targetVoxelArray, 97, axis=1)
+
+  def get98PercentileFeatureValue(self):
+    r"""
+    **6. 98th percentile**
+
+    The 98\ :sup:`th` percentile of :math:`\textbf{X}`
+    """
+
+    return numpy.nanpercentile(self.targetVoxelArray, 98, axis=1)
+
+  def get99PercentileFeatureValue(self):
+    r"""
+    **6. 99th percentile**
+
+    The 99\ :sup:`th` percentile of :math:`\textbf{X}`
+    """
+
+    return numpy.nanpercentile(self.targetVoxelArray, 99, axis=1)
+
   def getMaximumFeatureValue(self):
     r"""
     **7. Maximum**
