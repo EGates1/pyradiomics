@@ -326,6 +326,233 @@ class RadiomicsFirstOrder(base.RadiomicsFeaturesBase):
 
     return numpy.nanpercentile(self.targetVoxelArray, 75, 1) - numpy.nanpercentile(self.targetVoxelArray, 25, 1)
 
+
+  def getIntensityAtVolume10FeatureValue(self):  # largest intensity i such that at least 1 cm3 of voxels have intensity >i
+    r"""
+    **10. Intensity at Volume 0.001cc **
+
+    .. math::
+      \textit{IntensityAtVolume1} = text{max}\left(i:V_k\sum_{k=1}^{N_v} \left[\taxtbf{X}_{d,gl,k}\geq i\right] > 0.001\text{cc}\right) :
+
+    Here : the computation is performed by finding the intensity quantile corresponding to 0.05 cc. This is NOT this same
+    as IBSI which uses discretised values.
+    """
+
+    Np = self.targetVoxelArray.size
+    cubicMMPerVoxel = numpy.multiply.reduce(self.pixelSpacing)
+    frac_quantile = (10./cubicMMPerVoxel)/Np
+    return numpy.nanpercentile(self.targetVoxelArray, 100.*(1-frac_quantile), axis=1)
+
+  def getIntensityAtVolume50FeatureValue(self):  # largest intensity i such that at least 1 cm3 of voxels have intensity >i
+    r"""
+    **10. Intensity at Volume 0.05cc **
+
+    .. math::
+      \textit{IntensityAtVolume1} = text{max}\left(i:V_k\sum_{k=1}^{N_v} \left[\taxtbf{X}_{d,gl,k}\geq i\right] > 0.05\text{cc}\right) :
+
+    Here : the computation is performed by finding the intensity quantile corresponding to 0.05 cc. This is NOT this same
+    as IBSI which uses discretised values.
+    """
+
+    Np = self.targetVoxelArray.size
+    cubicMMPerVoxel = numpy.multiply.reduce(self.pixelSpacing)
+    frac_quantile = (50./cubicMMPerVoxel)/Np
+    return numpy.nanpercentile(self.targetVoxelArray, 100.*(1-frac_quantile), axis=1)
+
+
+  def getIntensityAtVolume100FeatureValue(self):  # largest intensity i such that at least 1 cm3 of voxels have intensity >i
+    r"""
+    **10. Intensity at Volume 0.1cc **
+
+    .. math::
+      \textit{IntensityAtVolume1} = text{max}\left(i:V_k\sum_{k=1}^{N_v} \left[\taxtbf{X}_{d,gl,k}\geq i\right] > 0.1\text{cc}\right) :
+
+    Here : the computation is performed by finding the intensity quantile corresponding to 0.1 cc. This is NOT this same
+    as IBSI which uses discretised values.
+    """
+
+    Np = self.targetVoxelArray.size
+    cubicMMPerVoxel = numpy.multiply.reduce(self.pixelSpacing)
+    frac_quantile = (100./cubicMMPerVoxel)/Np
+    return numpy.nanpercentile(self.targetVoxelArray, 100.*(1-frac_quantile), axis=1)
+
+  def getIntensityAtVolume500FeatureValue(self):  # largest intensity i such that at least 1 cm3 of voxels have intensity >i
+    r"""
+    **10. Intensity at Volume 0.5cc **
+
+    .. math::
+      \textit{IntensityAtVolume1} = text{max}\left(i:V_k\sum_{k=1}^{N_v} \left[\taxtbf{X}_{d,gl,k}\geq i\right] > 0.5\text{cc}\right) :
+
+    Here : the computation is performed by finding the intensity quantile corresponding to 0.5 cc. This is NOT this same
+    as IBSI which uses discretised values.
+    """
+
+    Np = self.targetVoxelArray.size
+    cubicMMPerVoxel = numpy.multiply.reduce(self.pixelSpacing)
+    frac_quantile = (500./cubicMMPerVoxel)/Np
+    return numpy.nanpercentile(self.targetVoxelArray, 100.*(1-frac_quantile), axis=1)
+
+
+  def getIntensityAtVolume1000FeatureValue(self):  # largest intensity i such that at least 1 cm3 of voxels have intensity >i
+    r"""
+    **10. Intensity at Volume 1cc **
+
+    .. math::
+      \textit{IntensityAtVolume1} = text{max}\left(i:V_k\sum_{k=1}^{N_v} \left[\taxtbf{X}_{d,gl,k}\geq i\right] > 1\text{cc}\right) :
+
+    Here : the computation is performed by finding the intensity quantile corresponding to 1 cc. This is NOT this same
+    as IBSI which uses discretised values.
+    """
+
+    Np = self.targetVoxelArray.size
+    cubicMMPerVoxel = numpy.multiply.reduce(self.pixelSpacing)
+    frac_quantile = (1000./cubicMMPerVoxel)/Np
+    return numpy.nanpercentile(self.targetVoxelArray, 100.*(1-frac_quantile), axis=1)
+
+  def getIntensityAtVolume2000FeatureValue(self):
+    r"""
+    **10. Intensity at Volume 2cc **
+
+    .. math::
+      \textit{IntensityAtVolume1} = text{max}\left(i:V_k\sum_{k=1}^{N_v} \left[\taxtbf{X}_{d,gl,k}\geq i\right] > 2\text{cc}\right) :
+
+    Here : the computation is performed by finding the intensity quantile corresponding to 2 cc. This is NOT this same
+    as IBSI which uses discretised values.
+    """
+
+    Np = self.targetVoxelArray.size
+    cubicMMPerVoxel = numpy.multiply.reduce(self.pixelSpacing)
+    frac_quantile = (2000. / cubicMMPerVoxel) / Np
+    return numpy.nanpercentile(self.targetVoxelArray, 100. * (1 - frac_quantile), axis=1)
+
+  def getIntensityAtVolume3000FeatureValue(self):
+    r"""
+    **10. Intensity at Volume 3cc **
+
+    .. math::
+      \textit{IntensityAtVolume1} = text{max}\left(i:V_k\sum_{k=1}^{N_v} \left[\taxtbf{X}_{d,gl,k}\geq i\right] > 3\text{cc}\right) :
+
+    Here : the computation is performed by finding the intensity quantile corresponding to 3 cc. This is NOT this same
+    as IBSI which uses discretised values
+    """
+
+    Np = self.targetVoxelArray.size
+    cubicMMPerVoxel = numpy.multiply.reduce(self.pixelSpacing)
+    frac_quantile = (3000. / cubicMMPerVoxel) / Np
+    return numpy.nanpercentile(self.targetVoxelArray, 100. * (1 - frac_quantile), axis=1)
+
+  def getIntensityAtVolume4000FeatureValue(self):
+    r"""
+    **10. Intensity at Volume 3cc **
+
+    .. math::
+      \textit{IntensityAtVolume1} = text{max}\left(i:V_k\sum_{k=1}^{N_v} \left[\taxtbf{X}_{d,gl,k}\geq i\right] > 4\text{cc}\right) :
+
+    Here : the computation is performed by finding the intensity quantile corresponding to 4 cc. This is NOT this same
+    as IBSI which uses discretised values
+    """
+
+    Np = self.targetVoxelArray.size
+    cubicMMPerVoxel = numpy.multiply.reduce(self.pixelSpacing)
+    frac_quantile = (4000. / cubicMMPerVoxel) / Np
+    return numpy.nanpercentile(self.targetVoxelArray, 100. * (1 - frac_quantile), axis=1)
+
+  def getIntensityAtVolume5000FeatureValue(self):
+    r"""
+    **10. Intensity at Volume 3cc **
+
+    .. math::
+      \textit{IntensityAtVolume1} = text{max}\left(i:V_k\sum_{k=1}^{N_v} \left[\taxtbf{X}_{d,gl,k}\geq i\right] > 5\text{cc}\right) :
+
+    Here : the computation is performed by finding the intensity quantile corresponding to 5 cc. This is NOT this same
+    as IBSI which uses discretised values
+    """
+
+    Np = self.targetVoxelArray.size
+    cubicMMPerVoxel = numpy.multiply.reduce(self.pixelSpacing)
+    frac_quantile = (5000. / cubicMMPerVoxel) / Np
+    return numpy.nanpercentile(self.targetVoxelArray, 100. * (1 - frac_quantile), axis=1)
+
+  def getIntensityAtVolume6000FeatureValue(self):
+    r"""
+    **10. Intensity at Volume 6cc **
+
+    .. math::
+      \textit{IntensityAtVolume1} = text{max}\left(i:V_k\sum_{k=1}^{N_v} \left[\taxtbf{X}_{d,gl,k}\geq i\right] > 6\text{cc}\right) :
+
+    Here : the computation is performed by finding the intensity quantile corresponding to 6 cc. This is NOT this same
+    as IBSI which uses discretised values
+    """
+
+    Np = self.targetVoxelArray.size
+    cubicMMPerVoxel = numpy.multiply.reduce(self.pixelSpacing)
+    frac_quantile = (6000. / cubicMMPerVoxel) / Np
+    return numpy.nanpercentile(self.targetVoxelArray, 100. * (1 - frac_quantile), axis=1)
+
+  def getIntensityAtVolume7000FeatureValue(self):
+    r"""
+    **10. Intensity at Volume 7cc **
+
+    .. math::
+      \textit{IntensityAtVolume1} = text{max}\left(i:V_k\sum_{k=1}^{N_v} \left[\taxtbf{X}_{d,gl,k}\geq i\right] > 7\text{cc}\right) :
+
+    Here : the computation is performed by finding the intensity quantile corresponding to 7 cc. This is NOT this same
+    as IBSI which uses discretised values
+    """
+
+    Np = self.targetVoxelArray.size
+    cubicMMPerVoxel = numpy.multiply.reduce(self.pixelSpacing)
+    frac_quantile = (7000. / cubicMMPerVoxel) / Np
+    return numpy.nanpercentile(self.targetVoxelArray, 100. * (1 - frac_quantile), axis=1)
+
+  def getIntensityAtVolume8000FeatureValue(self):
+    r"""
+    **10. Intensity at Volume 8cc **
+
+    .. math::
+      \textit{IntensityAtVolume1} = text{max}\left(i:V_k\sum_{k=1}^{N_v} \left[\taxtbf{X}_{d,gl,k}\geq i\right] > 8\text{cc}\right) :
+
+    Here : the computation is performed by finding the intensity quantile corresponding to 8 cc. This is NOT this same
+    as IBSI which uses discretised values
+    """
+
+    Np = self.targetVoxelArray.size
+    cubicMMPerVoxel = numpy.multiply.reduce(self.pixelSpacing)
+    frac_quantile = (8000. / cubicMMPerVoxel) / Np
+    return numpy.nanpercentile(self.targetVoxelArray, 100. * (1 - frac_quantile), axis=1)
+
+  def getIntensityAtVolume9000FeatureValue(self):
+    r"""
+    **10. Intensity at Volume 9cc **
+
+    .. math::
+      \textit{IntensityAtVolume1} = text{max}\left(i:V_k\sum_{k=1}^{N_v} \left[\taxtbf{X}_{d,gl,k}\geq i\right] > 9\text{cc}\right) :
+
+    Here : the computation is performed by finding the intensity quantile corresponding to 9 cc. This is NOT this same
+    as IBSI which uses discretised values
+    """
+
+    Np = self.targetVoxelArray.size
+    cubicMMPerVoxel = numpy.multiply.reduce(self.pixelSpacing)
+    frac_quantile = (9000. / cubicMMPerVoxel) / Np
+    return numpy.nanpercentile(self.targetVoxelArray, 100. * (1 - frac_quantile), axis=1)
+
+  def getIntensityAtVolume10000FeatureValue(self):
+    r"""
+    **10. Intensity at Volume 10cc **
+
+    .. math::
+      \textit{IntensityAtVolume1} = text{max}\left(i:V_k\sum_{k=1}^{N_v} \left[\taxtbf{X}_{d,gl,k}\geq i\right] > 10\text{cc}\right) :
+
+    Here : the computation is performed by finding the intensity quantile corresponding to 10 cc. This is NOT this same
+    as IBSI which uses discretised values
+    """
+
+    Np = self.targetVoxelArray.size
+    cubicMMPerVoxel = numpy.multiply.reduce(self.pixelSpacing)
+    frac_quantile = (10000. / cubicMMPerVoxel) / Np
+    return numpy.nanpercentile(self.targetVoxelArray, 100. * (1 - frac_quantile), axis=1)
+
   def getRangeFeatureValue(self):
     r"""
     **11. Range**
